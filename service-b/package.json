@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/DmitryKorolDevPro/docker-example#readme",
   "dependencies": {
-    "express": "4.17.1"
+    "express": "^4.17.1",
+    "fake-db": "1.0.2"
   }
 }
