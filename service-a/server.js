@@ -6,7 +6,7 @@ const host = '0.0.0.0';
 const app = express();
 
 app.get('/', (req, res) => {
-  http.get('http://service-b:8081/api', (resp) => {
+  http.get(process.env.DB + '/api', (resp) => {
     let data = [];
 
     resp.on('data', (chunk) => {
