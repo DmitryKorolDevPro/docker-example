@@ -2,8 +2,9 @@ version: '3.5'
 services:
   service-a:
     build:
-      context: service-a
+      context: .
       dockerfile: Dockerfile
+      target: builder-a
     networks: 
       - example-network
     ports:
@@ -12,8 +13,9 @@ services:
       - DB=http://service-b:8081
   service-b:
     build:
-      context: service-b
+      context: .
       dockerfile: Dockerfile
+      target: builder-b
     networks: 
       - example-network
 
