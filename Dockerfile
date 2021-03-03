@@ -1,27 +1,32 @@
-FROM node:12-alpine as builder-a
+### Base-builder
+
+FROM node:12-alpine as base-builder
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./service-a
+### Builder-a
+
+FROM base-builder as builder-a
+
+COPY ./service-a/package*.json ./
 
 RUN npm install
 
-COPY . ./service-a
+COPY ./service-a/server.js ./
 
 EXPOSE 8080
 
 CMD [ "node", "server.js" ]
 
+### Builder-b
 
-FROM node:12-alpine as builder-b
+FROM base-builder as builder-b
 
-WORKDIR /usr/src/app
-
-COPY package*.json ./service-b
+COPY ./service-b/package*.json ./
 
 RUN npm install
 
-COPY . ./service-b
+COPY ./service-b/server.js ./
 
 EXPOSE 8081
 
